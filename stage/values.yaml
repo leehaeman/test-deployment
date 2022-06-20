@@ -1,5 +1,5 @@
 helm-guestbook:
-  replicaCount: 3
+  replicaCount: 4
 
   image:
     repository: gcr.io/heptio-images/ks-guestbook-demo
