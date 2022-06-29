@@ -1,0 +1,32 @@
+harbor:
+  expose:
+    type: ingress
+    tls:
+      enabled: false
+    ingress:
+      hosts:
+        core: harbor.fulfillment-dev.click
+        notary: notary.harbor.fulfillment-dev.click
+      className: nginx
+      annotations:
+        external-dns.alpha.kubernetes.io/hostname: harbor.fulfillment-dev.click
+  externalURL: https://harbor.fulfillment-dev.click
+
+  # https://github.com/goharbor/harbor-helm/issues/840
+  registry:
+    relativeurls: true
+
+  redis:
+    type: external
+    external:
+      addr: "set by secrets.yaml"
+
+  persistence:
+    enabled: true
+    imageChartStorage:
+      type: s3
+      s3:
+        region: ap-northeast-2
+        bucket: arn:aws:s3:::fulfillment-dev-harbor-registry
+        accesskey: "set by secrets.yaml"
+        secretkey: "set by secrets.yaml"
