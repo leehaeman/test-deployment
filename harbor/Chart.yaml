@@ -3,8 +3,8 @@ name: harbor
 description: An open source trusted cloud native registry that stores, signs, and scans content
 type: application
 appVersion: 2.5.0
-version: 2.5.0
+version: 1.9.0
 dependencies:
   - name: harbor
-    version: 2.5.0
+    version: 1.9.0
     repository: https://helm.goharbor.io
