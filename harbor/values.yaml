@@ -27,6 +27,6 @@ harbor:
       type: s3
       s3:
         region: ap-northeast-2
-        bucket: arn:aws:s3:::fulfillment-dev-harbor-registry
+        bucket: fulfillment-dev-harbor-registry
         accesskey: "set by secrets.yaml"
         secretkey: "set by secrets.yaml"
