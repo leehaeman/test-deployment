@@ -1,4 +1,5 @@
 harbor:
+  fullnameOverride: fulfillment-dev-harbor
   expose:
     type: ingress
     tls:
@@ -28,5 +29,3 @@ harbor:
       s3:
         region: ap-northeast-2
         bucket: fulfillment-dev-harbor-registry
-        accesskey: "set by secrets.yaml"
-        secretkey: "set by secrets.yaml"
