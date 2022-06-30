@@ -34,9 +34,9 @@ kube-prometheus-stack:
       paths:
         - /
     config:
-      global:
-        resolve_timeout: 1m
-        slack_api_url: "set by secrets.yaml"
+   #   global:
+   #     resolve_timeout: 1m
+   #     slack_api_url: "set by secrets.yaml"
       route:
         group_by:
           - alertname
