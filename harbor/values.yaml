@@ -1,28 +1,6 @@
 kube-prometheus-stack:
   fullnameOverride: fulfillment-dev-prometheus
 
-  additionalPrometheusRulesMap:
-    rule-name:
-      groups:
-        - name: fulfillment-dev
-          rules:
-            - alert: '5xx error on incoming requests'
-              expr: |
-                sum(
-                  rate(
-                    nginx_ingress_controller_requests{status=~"5\\d\\d"}[1m]
-                  ) * 60
-                ) > 1
-              for: 5m
-              labels:
-                severity: 'critical'
-              annotations:
-                summary: '5xx error occurred on incoming requests'
-                description: 'Rate of 5xx error on incoming requests is {{ printf "%.0f" $value }}'
-                # TODO : modify datadog url
-                logs: 'https://www.datadoghq.com/'
-                severity: 'critical'
-
   alertmanager:
     ingress:
       enabled: true
@@ -34,9 +12,9 @@ kube-prometheus-stack:
       paths:
         - /
     config:
-   #   global:
-   #     resolve_timeout: 1m
-   #     slack_api_url: "set by secrets.yaml"
+      global:
+        resolve_timeout: 1m
+        slack_api_url: "set by secrets.yaml"
       route:
         group_by:
           - alertname
